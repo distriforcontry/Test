@@ -1,0 +1,14 @@
+{
+  "name": "talabnoma-80plus-reyestr",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Snapshot Excel'dan 80+ kechikkan mijozlar bo'yicha BRIGHT/URBAN/COMMUNITY talabnoma reyestrlarini tuzish",
+  "license": "UNLICENSED",
+  "bin": { "reyestr80": "cli.js" },
+  "scripts": {
+    "build": "node tools/build.js",
+    "test": "node --test test/*.test.js",
+    "reyestr": "node cli.js"
+  },
+  "engines": { "node": ">=18" }
+}

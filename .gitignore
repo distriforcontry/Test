@@ -1,0 +1,10 @@
+# Mijozlar ma'lumoti (snapshot, reyestrlar) repoga tushmasin — repo ochiq (public)!
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+*.zip
+out/
+natija/
+node_modules/
+.DS_Store

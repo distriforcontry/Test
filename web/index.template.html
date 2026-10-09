@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talabnoma 80+ reyestri</title>
+<style>
+  :root {
+    --bg: #f5f6f8; --card: #ffffff; --text: #1d2330; --muted: #5d6677; --line: #dfe3ea;
+    --accent: #1f6feb; --accent-text: #ffffff; --ok: #1a7f37; --warn: #9a6700; --err: #cf222e; --chip: #eef2f8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1218; --card: #171b23; --text: #e6e9ef; --muted: #9aa3b2; --line: #2a303c;
+      --accent: #4c8dff; --accent-text: #0b0e13; --ok: #3fb950; --warn: #d29922; --err: #f85149; --chip: #212734;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 16px 48px; }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 20px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .drop { border: 2px dashed var(--line); border-radius: 10px; padding: 22px; text-align: center; cursor: pointer; transition: border-color .15s; }
+  .drop.over, .drop:hover { border-color: var(--accent); }
+  .drop strong { display: block; font-size: 16px; }
+  .drop span { color: var(--muted); font-size: 13px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 16px; }
+  label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+  input[type=date], input[type=number] { width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--text); font: inherit; }
+  .check { display: flex; gap: 8px; align-items: flex-start; margin-top: 14px; color: var(--text); font-size: 14px; }
+  .check input { margin-top: 4px; }
+  .tablewrap { overflow-x: auto; }
+  button, .btn { display: inline-block; max-width: 100%; border: 0; border-radius: 8px; padding: 11px 20px; font: inherit; font-weight: 600; cursor: pointer; background: var(--accent); color: var(--accent-text); text-decoration: none; }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+  .actions { margin-top: 18px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .bar { height: 8px; background: var(--chip); border-radius: 4px; overflow: hidden; margin-top: 14px; display: none; }
+  .bar > div { height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+  .status { color: var(--muted); font-size: 14px; }
+  .error { color: var(--err); white-space: pre-wrap; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 12px 0 4px; }
+  .stat { background: var(--chip); border-radius: 10px; padding: 12px; }
+  .stat b { display: block; font-size: 22px; }
+  .stat small { color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; font-size: 13px; }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+  .warn { color: var(--warn); font-size: 14px; margin-top: 10px; }
+  .files a { display: inline-block; margin: 8px 12px 0 0; color: var(--accent); }
+  details { margin-top: 4px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .rule { color: var(--muted); font-size: 14px; }
+  .rule li { margin: 4px 0; }
+  .hidden { display: none; }
+  @media (max-width: 520px) { main { padding: 18px 16px 36px; } h1 { font-size: 20px; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Talabnoma 80+ reyestri</h1>
+  <p class="sub">docsystem → «sud - boss (fork)» dan yuklangan snapshot Excel'ini tanlang va «Reyestr yaratish» tugmasini bosing.
+    Fayl hech qayerga yuborilmaydi — hamma hisob shu brauzerning o'zida bajariladi.</p>
+
+  <section class="card">
+    <div id="drop" class="drop" tabindex="0">
+      <strong id="fileLabel">Snapshot faylini tanlang (.xlsx)</strong>
+      <span>yoki faylni shu yerga sudrab tashlang</span>
+      <input id="file" type="file" accept=".xlsx" class="hidden">
+    </div>
+
+    <div class="grid">
+      <div>
+        <label for="docDate">Hujjat sanasi (reyestrdagi «date»)</label>
+        <input id="docDate" type="date">
+      </div>
+      <div>
+        <label for="threshold">Kechikish chegarasi, kun</label>
+        <input id="threshold" type="number" min="1" max="999" value="80">
+      </div>
+      <div>
+        <label for="asOf">Snapshot holati sanasi (bo'sh — avtomatik)</label>
+        <input id="asOf" type="date">
+      </div>
+    </div>
+    <label class="check"><input id="onlyOverdue" type="checkbox">
+      <span>Faqat muddati o'tgan qarzi bor shartnomalarni qo'shish (odatda o'chiq: mijozning firmadagi barcha faol shartnomalari qo'shiladi)</span></label>
+
+    <div class="actions">
+      <button id="run" disabled>Reyestr yaratish</button>
+      <span id="status" class="status"></span>
+    </div>
+    <div id="bar" class="bar"><div></div></div>
+    <div id="error" class="error"></div>
+  </section>
+
+  <section id="result" class="card hidden">
+    <h2 style="margin:0 0 4px;font-size:18px">Natija</h2>
+    <div id="resultInfo" class="status"></div>
+    <div id="stats" class="stats"></div>
+    <div class="tablewrap"><table id="firmTable"></table></div>
+    <div id="warnings"></div>
+    <div class="actions">
+      <a id="zipLink" class="btn" href="#">ZIP yuklab olish</a>
+    </div>
+    <div id="files" class="files"></div>
+  </section>
+
+  <section class="card">
+    <details>
+      <summary>Reyestr qanday tuziladi</summary>
+      <ul class="rule">
+        <li>Faqat BRIGHT (12842), URBAN (06292) va COMMUNITY (55890) filiallarining yopilmagan, qoldig'i bor kreditlari olinadi.</li>
+        <li>Har bir kredit uchun kechikish kuni hisoblanadi: to'lov jadvali (to'lov kuni = date_close kuni, dam olish kuni bo'lsa dushanba),
+          muddati o'tgan asosiy qarz va muddati o'tgan foiz qaysi to'lovlardan qolganini aniqlab, eng eski to'lanmagan to'lov sanasidan hisoblanadi.</li>
+        <li>Mijozning (PINFL) uchta firmadan birortasida bitta bo'lsa ham kechikishi chegaradan (80 kun) oshgan krediti bo'lsa —
+          mijozning barcha firmalardagi faol kreditlari reyestrga olinadi.</li>
+        <li>Har bir firma reyestriga faqat o'sha firmaning kredit ID'lari yoziladi (bir mijoz — bir qator).</li>
+        <li>«_korik» faylida har bir qatorning sababi, har bir shartnomaning kechikishi va ishlatilgan sozlamalar bor.</li>
+      </ul>
+    </details>
+  </section>
+</main>
+
+<!-- CORE -->
+
+<!-- APP -->
+</body>
+</html>
